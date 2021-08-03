@@ -1,0 +1,5 @@
+.singupform {
+  display: grid;
+  grid-column: 150px 150px;
+  grid-row: 150px;
+}

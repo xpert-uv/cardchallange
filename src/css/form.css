@@ -1,0 +1,30 @@
+.form__div {
+  background-color: white;
+  padding: 20px;
+  color: black;
+  opacity: 0.9;
+}
+.loginform {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.loginform Button {
+  color: white;
+  background-color: green;
+  border-radius: 10%;
+  font-size: 1em;
+}
+
+.loginform input[type="text"] {
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.loginform input[type="password"] {
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
