@@ -1,14 +1,36 @@
 import React from 'react';
-import { useStateValue } from './StateProvide';
-import setData from './setData';
+import { CardContext } from './StateProvide';
+import Image from './Image';
+import "../css/GameHome.css";
 
 const GameHome = () => {
-    const [{ users, cards, deck_id }] = useStateValue();
-    console.log(setData(useStateValue));
+    const cardImage = (args) => {
+        console.log(args);
+        return args.map(item => {
+           return < Image imgSrc = { item.image } code = { item.code } key={item.code} />
+        })
+    }
+    
+   
     return (
-        <div>
-            { console.log("this is data from gamehome:" )}
-        </div>
+        <CardContext.Consumer>
+            {value => (
+                <>
+                <div className="gamehome">
+                    <div className="gamehome__cards">
+                        {cardImage(value.cardData.cards)}
+                     </div>
+                </div>
+                    <div>
+                        <button>show</button>
+                        <button>Rise</button>
+                </div>
+               </>
+                )
+
+            }
+        </CardContext.Consumer>
+       
     )
 }
 

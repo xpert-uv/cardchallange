@@ -1,15 +1,24 @@
-import React, { createContext, useContext} from "react";
+import React, { createContext,useState} from "react";
+
+export const CardContext = createContext();
 
 
-// Prepares the dataLayer
-export const StateContext = createContext();
+function CardContextProvider({ children}) {
+    const initalState = {
+        username: "",
+        cards: [],
+        deck_id:""
+    }
 
-// Wrap our app and provide the Data layer
-export const StateProvider = ({ setData,initialState, children }) => (
-  <StateContext.Provider value={setData( initialState)}>
-    {children}
-  </StateContext.Provider>
-);
+    const [cardData, setCardData] = useState(initalState);
+    const value = { cardData, setCardData };
 
-// Pull information from the data layer
-export const useStateValue = () => useContext(StateContext);
+    return (
+        <CardContext.Provider value={ value}>
+            { children}
+        </CardContext.Provider>
+    )
+}
+
+export default CardContextProvider;
+

@@ -1,11 +1,10 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
-
-import { useStateValue } from './StateProvide';
-import { setData } from "./setData";
+import { CardContext } from './StateProvide';
 import "../css/form.css"
+
 
 
 const LoginPage = () => {
@@ -16,7 +15,7 @@ const LoginPage = () => {
     }
 
     const [formData, setFormData] = useState(Initial);
-    const [{users,cards,deck_id }] = useStateValue();
+    const { cardsData, setCardData } = useContext(CardContext);
     const history = useHistory();
     const handleChange = e => {
         const { name, value } = e.target;
@@ -44,11 +43,17 @@ const LoginPage = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        let cardsData = await login();
+        let cardsDataResponse = await login();
+        // eslint-disable-next-line react/jsx-pascal-case
+        console.log({ cardsDataResponse });
+       
+        setCardData({
+            username: cardsDataResponse?.users?.username,
+            cards: cardsDataResponse?.cards?.cards,
+            deck_id:cardsDataResponse?.cards?.deck_id
+        });
         console.log(cardsData);
-        setData(cardsData);
-        history.push("/gamehome");
-          
+         history.push("/gamehome");
         setFormData(Initial);
 
     }

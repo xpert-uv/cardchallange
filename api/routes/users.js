@@ -5,6 +5,10 @@ const User = require("../module/User");
 const axios = require("axios");
 
 /* GET users listing. */
+/**
+ * singup user and responde with user id 
+ * and six cards. 
+ */
 router.post("/register",  async function (req, res, next) {
   try {
     

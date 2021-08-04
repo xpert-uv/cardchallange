@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
-import GameHome from './GameHome';
+
+import { CardContext } from './StateProvide';
 import "../css/Signup.css";
 
 const Signup = () => {
@@ -14,6 +15,7 @@ const Signup = () => {
     }
 
     const [singupForm, setSignupForm] = useState(initial);
+    const { cardsData, setCardData } = useContext(CardContext);
     const history = useHistory();
 
     const handleChange = e => {
@@ -33,7 +35,13 @@ const Signup = () => {
 
          }).then(
              res => {
-                 <GameHome cards={res.data} />
+                 setCardData({
+                     username: res.data?.users?.username,
+                     cards:  res.data?.cards?.cards,
+                     deck_id: res.data?.cards?.deck_id
+
+                 })
+                          
                  
              }
             
@@ -111,7 +119,7 @@ const Signup = () => {
                 </label>
                 <button type="submit">Sing Up</button>
             </form>
-                 <GameHome cards={resp?.data}/>
+                
             </div>
             <Link to="/">Back</Link>
             </>
