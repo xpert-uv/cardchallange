@@ -1,3 +1,8 @@
+.gameboard {
+  display: flex;
+  flex-direction: row;
+  justify-items: end;
+}
 .gamehome {
   max-width: 1000px;
   margin: 0 auto;
@@ -11,6 +16,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .gamehome__cards > div:nth-child(-n + 3) {
@@ -21,4 +28,37 @@
 .gamehome__cards > div:nth-last-child(-n + 3) {
   margin-top: 3em;
   margin-left: 50px;
+}
+
+.gameboard button:last-child {
+  height: 50px;
+  background-color: grey;
+  margin-top: 10px;
+}
+
+.gamebutton__rise,
+.gamebutton__show {
+  margin-top: 600px;
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  color: rgb(248, 246, 246);
+  font: 3em Georgia, serif;
+  background-color: rgba(220, 0, 0, 1);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+}
+
+.gamehome h1:first-child {
+  margin: 0;
+  margin-left: 250px;
+}
+.gamehome h1:last-child {
+  margin: 0;
+  margin-left: 250px;
 }

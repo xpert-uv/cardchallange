@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
@@ -17,6 +17,21 @@ const LoginPage = () => {
     const [formData, setFormData] = useState(Initial);
     const { cardsData, setCardData } = useContext(CardContext);
     const history = useHistory();
+    const LocalStorage = JSON.parse(localStorage.getItem("session"));
+   
+    /**
+     * checks whether the user is currently loged in or not 
+     * if login already just load the game session 
+     * 
+     */
+
+    useEffect(() => {
+        if (LocalStorage?.username) { history?.push('/gamehome'); }
+    },[LocalStorage])
+
+
+
+
     const handleChange = e => {
         const { name, value } = e.target;
         setFormData(data => ({
@@ -52,6 +67,12 @@ const LoginPage = () => {
             cards: cardsDataResponse?.cards?.cards,
             deck_id:cardsDataResponse?.cards?.deck_id
         });
+       
+        localStorage.setItem("session", JSON.stringify({
+            username: cardsDataResponse?.users?.username,
+            cards: cardsDataResponse?.cards?.cards,
+            deck_id:cardsDataResponse?.cards?.deck_id
+        }))
         console.log(cardsData);
          history.push("/gamehome");
         setFormData(Initial);

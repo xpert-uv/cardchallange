@@ -13,3 +13,11 @@
   color: white;
   font-family: Georgia, serif;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: calc(7px + 2vmin);
+
+  font-family: Georgia, serif;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
@@ -17,6 +17,18 @@ const Signup = () => {
     const [singupForm, setSignupForm] = useState(initial);
     const { cardsData, setCardData } = useContext(CardContext);
     const history = useHistory();
+
+    const LocalStorage = JSON.parse(localStorage.getItem("session"));
+
+    /**
+     * checks whether the user is currently loged in or not 
+     * if login already just load the game session 
+     * Do not let to sign Up, unless user log's Out. 
+     */
+    useEffect(() => {
+        if (LocalStorage?.username) { history?.push('/gamehome'); }
+    },[LocalStorage])
+
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -41,7 +53,14 @@ const Signup = () => {
                      deck_id: res.data?.cards?.deck_id
 
                  })
-                          
+                 //store the data in localstorage 
+                 //when page refreseh user don't have to go singin again
+                 //as long as user dosen't sign Out.
+                 localStorage.setItem("session", JSON.stringify({
+                     username: res.data?.users?.username,
+                     cards:  res.data?.cards?.cards,
+                     deck_id: res.data?.cards?.deck_id
+                }))     
                  
              }
             
@@ -121,7 +140,7 @@ const Signup = () => {
             </form>
                 
             </div>
-            <Link to="/">Back</Link>
+           <button className="signup__back"><Link to="/">Back</Link> </button> 
             </>
     )
 }

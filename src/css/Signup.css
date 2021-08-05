@@ -1,5 +1,38 @@
+.singupform__div {
+  background-color: white;
+  padding: 20px;
+  color: black;
+  opacity: 0.9;
+}
+.signup__back {
+  height: 50px;
+  background-color: grey;
+  margin-top: 10px;
+}
+
+.singupform__div Button {
+  color: white;
+  background-color: green;
+  border-radius: 10%;
+  font-size: 1em;
+  margin: 2em;
+}
 .singupform {
-  display: grid;
-  grid-column: 150px 150px;
-  grid-row: 150px;
+  display: flex;
+  flex-direction: row;
+}
+.singupform input[type="text"] {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.singupform input[type="password"] {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
