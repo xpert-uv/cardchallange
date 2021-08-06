@@ -8,7 +8,7 @@ const Home = () => {
         <div className="home">
             <div className="home__first">
                <p> <i>"May the Odds be in your Favour"</i> </p>
-                <h1>Teen Pati</h1>
+                <h1>Teen Patti</h1>
                 
             </div>
             <div className="home__second">
