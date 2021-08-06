@@ -1,11 +1,3 @@
-
-
-
-    const LocalStorage = JSON.parse(localStorage.getItem("session"));
-    const computerCards = [LocalStorage.cards[0], LocalStorage.cards[1], LocalStorage.cards[2]];
-    const playerCards = [LocalStorage.cards[3], LocalStorage.cards[4], LocalStorage.cards[5]];
-   
-
     export const TriCheck = (cards) => {
          const cardsValue = cards.map(element => {
             return element.value
@@ -87,15 +79,7 @@
         
      };
 
-    
-    console.log(` this is for triel check: ${TriCheck(playerCards)}, ${TriCheck(computerCards)}`);
-    console.log(` this is for triel check: ${TriCheck(playerCards)}, ${TriCheck(computerCards)}`);
-    console.log(` this is for triel check: ${PureSquence(playerCards)}, ${PureSquence(computerCards)}`);
-    console.log(` this is for triel check: ${pair(playerCards)}, ${pair(computerCards)}`);
-    console.log(` this is for triel check: ${Squence(playerCards)}, ${Squence(computerCards)}`);
-    console.log(` this is for triel check: ${color(playerCards)}, ${color(computerCards)}`);
-    console.log(` this is for triel check: ${highCard(playerCards)}, ${highCard(computerCards)}`);
-    
+  
 
 
    
