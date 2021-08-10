@@ -1,3 +1,11 @@
+About:
+    
+    This 3 card poker. I have created this game as the challange presented by Mintbean Hackathon. 
+    This full Stack Application Web Application. 
+    
+        Tech Stack Used: React.js, JavaScript, CSS, Node.js, PostgreSQL.
+
+
 To get Statred :
 
 
